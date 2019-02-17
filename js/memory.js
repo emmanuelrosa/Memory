@@ -301,7 +301,16 @@
     this.halfNumTiles = this.numTiles/2;
     this.newCards = [];
     for ( var i = 0; i < this.halfNumTiles; i++ ) {
-      this.newCards.push(this.cards[i], this.cards[i]);
+      var dup = {
+       id : this.cards[i].id,
+       img: this.cards[i].img
+      };
+
+      if(this.cards[i].altImg) {
+        dup.img = this.cards[i].altImg;
+      };
+
+      this.newCards.push(this.cards[i], dup);
     }
     this.newCards = shuffle(this.newCards);
     this.tilesHTML = '';
